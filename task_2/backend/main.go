@@ -31,13 +31,15 @@ func main(){
 	dbname:=os.Getenv("DB_NAME")
 	port:=os.Getenv("DB_PORT")
 	sslmode:=os.Getenv("DB_SSLMODE")
-
+	frontendURL:=os.Getenv("FRONTEND_URL")
+	frontendURL1:=os.Getenv("FRONTEND_URL_1")
+	frontendURL2:=os.Getenv("FRONTEND_URL_1")
 
 	r := gin.Default()
 
 	// CORS middleware configuration
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:3000","http://localhost:3001"}, // Frontend URL
+		AllowOrigins:     []string{frontendURL,frontendURL1,frontendURL2}, // Frontend URL
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length","Set-Cookie"},
