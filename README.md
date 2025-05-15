@@ -18,4 +18,4 @@ This repository contains tasks for the recruitment of the **SPO Web Executive** 
 
 ## Task 3: Docker Task (Bonus)
 For Task 3, you are required to deploy the solutions from Task 1 (SPO student page clone with insights redesign) and Task 2 (Structured Insight Collector in Golang) using Docker containers on an AWS EC2 instance. Ensure that both the frontend (React/Next.js) and backend (Golang) applications are properly Dockerized, with the Dockerfiles correctly set up for smooth execution within the containers. Deploy the containers on an EC2 instance, ensuring both applications are accessible and running properly.
-# This task is optional, but if you take it on, it will definitely set you apart!
+#### This task is optional, but if you take it on, it will definitely set you apart!
