@@ -57,5 +57,5 @@ func main(){
 	r.POST("/uploadInsightPlacements",controllers.WriteToDBForPlacement(db,authSecretKey))
 	r.POST("/getInsightsPlacements",controllers.SendingDataPlacement(db,authSecretKey))
 	r.POST("/getInsightsIntern",controllers.SendingDataIntern(db,authSecretKey))
-	r.Run(listeningPort)
+	r.Run(":"+listeningPort)
 }
