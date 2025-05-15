@@ -37,7 +37,7 @@ func main(){
 	sslmode:=mustGetEnv("DB_SSLMODE")
 	frontendURL:=mustGetEnv("FRONTEND_URL")
 	frontendURL1:=mustGetEnv("FRONTEND_URL_1")
-	frontendURL2:=mustGetEnv("FRONTEND_URL_1")
+	frontendURL2:=mustGetEnv("FRONTEND_URL_2")
 
 	r := gin.Default()
 
