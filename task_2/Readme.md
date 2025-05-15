@@ -90,3 +90,5 @@ This project implements a full-stack portal that allows **IITK students** to sha
 
    ```env
    NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
+   In place of 8000 use the port number on which your backen runs
+
