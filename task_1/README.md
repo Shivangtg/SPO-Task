@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SPO Web Executive Recruitment Tasks
 
-## Getting Started
+This repository contains the tasks submitted for the **SPO Web Executive** recruitment process at IIT Kanpur.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✅ Task 1: Recreate "For Students" Page of IITK SPO
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Built using **Next.js**.
+- Mimics the original "For Students" page on the [IITK SPO website](https://spo.iitk.ac.in/), structured with multiple **card-based sections**, each linking to specific resources or information.
+- Card data (title, link, section, etc.) is stored as **JSON files** in the `app/data/` folder.
+- These JSON files are loaded to dynamically render the content using arrays of components.
+- Since there is minimal interactivity, the **Home page uses mostly Server-Side Rendering (SSR)** for better performance and SEO.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✅ Task 2: Placement and Internship Experience Portal
 
-## Learn More
+A platform for **IITK students who are placed or have interned** to **share their experiences** and insights for the benefit of their juniors.
 
-To learn more about Next.js, take a look at the following resources:
+### 🔧 Tech Stack:
+- **Frontend**: Next.js with React (Client + Server Components)
+- **Backend/Database**: PostgreSQL hosted on **Neon**
+- **State Management**: React's `useContext` API for global student data handling
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 📄 Functionality:
+- The **Insights page** displays a list of students with basic info (name + company).
+- When a user clicks on a student's bio card:
+  - Full experience data (like shortlisted companies, interview questions, advice, prep resources, etc.) is **fetched from the database**.
+  - This data is stored in a **React Context** and passed to the **dynamic subpage** rendered using Next.js routing (`/insights/[studentId]`).
+- The **student-specific page** shows detailed experience using the shared context state, avoiding redundant fetching.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🔍 Search Feature:
+- A **search box** is provided on the Insights page.
+- Implementation:
+  - For each student entry, relevant strings (e.g., name, company, role, experience, etc.) are concatenated and converted to lowercase.
+  - If the **search query** matches any part of this combined string, the entry is shown in the filtered results.
+  - This allows for simple but effective **full-text-like search**.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🗃️ Data Handling Summary
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Page        | Data Source       | Rendering | Notes |
+|-------------|-------------------|-----------|-------|
+| Home        | JSON (`app/data/`) | SSR       | Static cards with links |
+| Insights    | PostgreSQL (Neon) | CSR       | Dynamic content + search |
+| Student Page | React Context     | CSR       | Context prefilled on click |
+
+---
+
+Feel free to explore the codebase and share feedback or suggestions. Contributions welcome!
