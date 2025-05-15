@@ -10,30 +10,34 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 )
 
-func main(){
-	err:=godotenv.Load()
-	if err!=nil{
-		log.Fatal("Error loading .env file")
+func mustGetEnv(key string) string {
+	val := os.Getenv(key)
+	if val == "" {
+		log.Fatalf("Missing required environment variable %s", key)
 	}
+	return val
+}
+
+
+func main(){
 	// DB_User_Name:=os.Getenv("USER_NAME")
 	// DB_User_Password:=os.Getenv("USER_PASSWORD")
 	// DB_Name:=os.Getenv("DB_NAME")
 	// ssl_Mode:=os.Getenv("SSL_MODE")
 	// // frontendURL:=os.Getenv("FRONTEND_URL")
-	authSecretKey:=os.Getenv("AUTH_SECRET_KEY")
-	listeningPort:=os.Getenv("PORT")
-	host:=os.Getenv("DB_HOST")
-	user:=os.Getenv("DB_USER")
-	pass:=os.Getenv("DB_PASSWORD")
-	dbname:=os.Getenv("DB_NAME")
-	port:=os.Getenv("DB_PORT")
-	sslmode:=os.Getenv("DB_SSLMODE")
-	frontendURL:=os.Getenv("FRONTEND_URL")
-	frontendURL1:=os.Getenv("FRONTEND_URL_1")
-	frontendURL2:=os.Getenv("FRONTEND_URL_1")
+	authSecretKey:=mustGetEnv("AUTH_SECRET_KEY")
+	listeningPort:=mustGetEnv("PORT")
+	host:=mustGetEnv("DB_HOST")
+	user:=mustGetEnv("DB_USER")
+	pass:=mustGetEnv("DB_PASSWORD")
+	dbname:=mustGetEnv("DB_NAME")
+	port:=mustGetEnv("DB_PORT")
+	sslmode:=mustGetEnv("DB_SSLMODE")
+	frontendURL:=mustGetEnv("FRONTEND_URL")
+	frontendURL1:=mustGetEnv("FRONTEND_URL_1")
+	frontendURL2:=mustGetEnv("FRONTEND_URL_1")
 
 	r := gin.Default()
 
